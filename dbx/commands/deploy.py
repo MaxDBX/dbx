@@ -43,7 +43,9 @@ from dbx.utils.policy_parser import PolicyParser
     2. | Deployment configuration will be taken for environment
        | from the deployment file, defined in  :option:`--deployment-file` (default: :code:`conf.deployment.json`).
     3. Per each job defined in the :option:`--jobs`, all local file references will be checked
-    4. Any found file references will be uploaded to MLflow as artifacts of current deployment run
+    4. | Any found file references will be uploaded to MLflow as artifacts of current deployment run
+       | The file references in the job spec will be adjusted to point to the dbfs:/ path of the mlflow artifact
+       | To reference to the fuse mount (/dbfs/) instead, prepend file references in the job definition with fuse://
     5. If :option:`--requirements-file` is provided, all requirements will be added to job definition
     6. Wheel file location will be added to the :code:`libraries`. Can be disabled with :option:`--no-package`.
     7. If the job with given name exists, it will be updated, if not - created
